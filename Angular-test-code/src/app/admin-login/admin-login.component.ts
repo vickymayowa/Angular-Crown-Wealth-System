@@ -26,8 +26,8 @@ export class AdminLoginComponent {
     }
   }
   onLogin(): void {
-    const userData = localStorage['Students']
-      ? JSON.parse(localStorage['Students'])
+    const userData = localStorage['admins']
+      ? JSON.parse(localStorage['admins'])
       : [];
     console.log(userData);
     if (!this.email || !this.password) {

@@ -40,6 +40,7 @@ export class AdminRegisterComponent {
     };
     this.users = [...this.users, user];
     localStorage.setItem('admins', JSON.stringify(this.users));
-    // this.route.navigate(['displayUser']);
+    this.route.navigate(['adminLogin']);
+    alert('User Created SuccessFully');
   }
 }
