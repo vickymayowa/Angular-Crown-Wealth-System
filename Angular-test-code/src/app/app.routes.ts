@@ -16,7 +16,13 @@ export const routes: Routes = [
 
   {
     path: 'dashboard',
-    children: [{ path: '', component: AdminDashboardComponent }],
+    children: [
+      {
+        path: '',
+        component: AdminDashboardComponent,
+      },
+      { path: 'viewUser/:id', component: AdminViewUserComponent },
+    ],
     canActivate: [adminDashboardGuard],
   },
 ];
