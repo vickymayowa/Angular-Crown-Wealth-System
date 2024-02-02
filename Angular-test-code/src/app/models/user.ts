@@ -7,4 +7,5 @@ export interface UserProfile {
   gender: string;
   address: string;
   password: String;
+  // matricNumber: number;
 }

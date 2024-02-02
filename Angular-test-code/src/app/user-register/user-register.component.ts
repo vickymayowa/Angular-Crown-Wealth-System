@@ -20,11 +20,11 @@ export class UserRegisterComponent {
   gender = '';
   address = '';
   password = '';
-
+  matricNumber: any;
   users: UserProfile[] = [];
   ngOnInit() {
-    if (localStorage['users']) {
-      this.users = JSON.parse(localStorage['users']);
+    if (localStorage['Students']) {
+      this.users = JSON.parse(localStorage['Students']);
     }
   }
 
@@ -38,6 +38,7 @@ export class UserRegisterComponent {
       gender: this.gender,
       address: this.address,
       password: this.password,
+      matricNumber: (this.matricNumber = Math.round(Math.random() * 9000) + 9),
     };
     this.users = [...this.users, user];
     console.log(this.users);
