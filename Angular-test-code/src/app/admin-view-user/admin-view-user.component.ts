@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserProfile } from '../models/user';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-view-user',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, CommonModule],
   templateUrl: './admin-view-user.component.html',
   styleUrl: './admin-view-user.component.css',
 })
@@ -34,8 +37,8 @@ export class AdminViewUserComponent {
   constructor(public activated: ActivatedRoute, public route: Router) {}
 
   ngOnInit() {
-    if (localStorage['users']) {
-      this.users = JSON.parse(localStorage['users']);
+    if (localStorage['Students']) {
+      this.users = JSON.parse(localStorage['Students']);
       this.activated.params.subscribe((params) => {
         this.userId = +params['id']; // Assuming the route parameter is named 'id'
         this.user =
@@ -48,8 +51,8 @@ export class AdminViewUserComponent {
   }
   deleteUser() {
     this.users = this.users.filter((user) => user.id !== this.userId);
-    localStorage.setItem('users', JSON.stringify(this.users));
-    this.route.navigate(['displayUser']);
+    localStorage.setItem('Students', JSON.stringify(this.users));
+    this.route.navigate(['dashboard']);
   }
   editProfile(): void {
     // Call the service to update the user profile
@@ -68,7 +71,7 @@ export class AdminViewUserComponent {
       password: this.password,
     };
     this.users.splice(userIdx, 1, user);
-    localStorage.setItem('users', JSON.stringify(this.users));
+    localStorage.setItem('Students', JSON.stringify(this.users));
     this.route.navigate(['displayUser']);
   }
 }
