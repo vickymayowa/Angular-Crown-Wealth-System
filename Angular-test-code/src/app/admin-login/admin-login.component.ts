@@ -34,13 +34,14 @@ export class AdminLoginComponent {
       alert('Please enter all fields');
     } else {
       let currentUser = this.users.find(
-        (student, index) =>
-          this.email == student.email && this.password == student.password
+        (admin, index) =>
+          this.email == admin.email && this.password == admin.password
       );
       if (currentUser != undefined) {
         // save logged in user to local storage
         localStorage.setItem('LoggedUser', JSON.stringify(currentUser));
-        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('isLoggedInAdmin', 'true');
+        alert('Admin LoggedIn SuccessFully');
         this.route.navigate(['dashboard']);
       } else {
         alert('Invalid Email or Password! Please try again.');

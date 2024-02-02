@@ -1,1 +1,55 @@
-<p>admin-dashboard works!</p>
+<div>
+  <div>
+    <h2 class="text-center text-black bg-primary">
+      Welcome to the Admin Dashboard
+    </h2>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Address</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of users; track $index) {
+    <tr>
+      <td>{{ user.id }}</td>
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phone }}</td>
+      <td>{{ user.gender }}</td>
+      <td>{{ user.address }}</td>
+      <td>
+        <div class="dropdown">
+          <button
+            class="btn btn-primary dropdown-toggle"
+            type="button"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Actions
+          </button>
+
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" routerLink="/viewUser/{{ user.id }}"
+                >View User Profile</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
